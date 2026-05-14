@@ -14,9 +14,9 @@ const buttonVariants = cva(
           "border border-foreground/40 text-foreground hover:border-foreground hover:bg-foreground hover:text-background",
         ghost: "hover:bg-foreground/5 text-foreground",
         link: "text-foreground underline-offset-4 hover:underline px-0",
-        gold: "bg-[#C9A961] text-ink-900 hover:bg-[#B08F44]",
+        gold: "bg-gold text-ink-900 hover:bg-gold-500",
         outlineGold:
-          "border border-[#C9A961] text-[#C9A961] hover:bg-[#C9A961] hover:text-ink-900",
+          "border border-gold text-gold hover:bg-gold hover:text-ink-900",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       },

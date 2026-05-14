@@ -10,7 +10,7 @@ const statusLabels = {
 
 const statusClasses = {
   new: "text-foreground border-foreground/40",
-  confirmed: "text-[#C9A961] border-[#C9A961]",
+  confirmed: "text-gold border-gold",
   cancelled: "text-muted-foreground border-foreground/10",
 } as const;
 

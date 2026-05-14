@@ -19,8 +19,8 @@ export default function Account() {
   const [tab, setTab] = useState<Tab>("profile");
 
   return (
-    <Container className="py-16 md:py-24">
-      <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Account</p>
+    <Container className="page-enter py-16 md:py-24">
+      <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Private client</p>
       <h1 className="mt-6 font-display text-display-lg">
         {profile?.full_name?.trim() || user?.email}
       </h1>

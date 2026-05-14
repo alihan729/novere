@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { Gallery } from "@/components/property/Gallery";
 import { FavoriteButton } from "@/components/property/FavoriteButton";
 import { ViewingRequestForm } from "@/components/property/ViewingRequestForm";
+import { PropertyDetailSkeleton } from "@/components/ui/skeleton";
 import { useProperty } from "@/hooks/useProperties";
 import { formatArea, formatPrice } from "@/lib/utils";
 
@@ -12,15 +13,15 @@ export default function PropertyDetails() {
 
   if (isLoading) {
     return (
-      <Container className="py-24">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Loading…</p>
+      <Container>
+        <PropertyDetailSkeleton />
       </Container>
     );
   }
 
   if (error || !property) {
     return (
-      <Container className="py-24">
+      <Container className="page-enter py-24">
         <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Not found</p>
         <h1 className="mt-6 font-display text-display-lg">Residence unavailable.</h1>
         <Link
@@ -34,11 +35,11 @@ export default function PropertyDetails() {
   }
 
   return (
-    <>
+    <div className="page-enter">
       <Container className="py-12 md:py-16">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            <Link to="/catalog" className="hover:text-foreground">Collection</Link>
+            <Link to="/catalog" className="transition-colors hover:text-foreground">Collection</Link>
             <span>·</span>
             <span>{property.type}</span>
             <span>·</span>
@@ -61,22 +62,21 @@ export default function PropertyDetails() {
           </p>
 
           <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-foreground/10 pt-12 md:grid-cols-4">
-            <div>
-              <dt className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Bedrooms</dt>
-              <dd className="mt-3 font-display text-3xl">{property.bedrooms}</dd>
-            </div>
-            <div>
-              <dt className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Bathrooms</dt>
-              <dd className="mt-3 font-display text-3xl">{property.bathrooms}</dd>
-            </div>
-            <div>
-              <dt className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Area</dt>
-              <dd className="mt-3 font-display text-3xl">{formatArea(property.area)}</dd>
-            </div>
-            <div>
-              <dt className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Reference</dt>
-              <dd className="mt-3 font-display text-xl">{property.id.slice(0, 6).toUpperCase()}</dd>
-            </div>
+            {[
+              { label: "Bedrooms", value: property.bedrooms, size: "text-3xl" },
+              { label: "Bathrooms", value: property.bathrooms, size: "text-3xl" },
+              { label: "Area", value: formatArea(property.area), size: "text-3xl" },
+              { label: "Reference", value: property.id.slice(0, 6).toUpperCase(), size: "text-xl" },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                className="animate-fade-in"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                <dt className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{stat.label}</dt>
+                <dd className={`mt-3 font-display ${stat.size}`}>{stat.value}</dd>
+              </div>
+            ))}
           </dl>
         </div>
 
@@ -104,6 +104,6 @@ export default function PropertyDetails() {
         <div id="viewing" />
         <ViewingRequestForm propertyId={property.id} />
       </Container>
-    </>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Container } from "@/components/layout/Container";
 import { Filters } from "@/components/property/Filters";
 import { PropertyCard } from "@/components/property/PropertyCard";
+import { CatalogSkeleton } from "@/components/ui/skeleton";
 import { useProperties } from "@/hooks/useProperties";
 import type { PropertyFilters, PropertyType, DealType } from "@/types/database";
 
@@ -45,7 +46,7 @@ export default function Catalog() {
   }
 
   return (
-    <Container className="py-16 md:py-24">
+    <Container className="page-enter py-16 md:py-24">
       <div className="flex flex-col gap-4">
         <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Collection</p>
         <h1 className="font-display text-display-lg">All residences.</h1>
@@ -56,9 +57,7 @@ export default function Catalog() {
       </div>
 
       <div className="mt-12">
-        {isLoading && (
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Loading…</p>
-        )}
+        {isLoading && <CatalogSkeleton />}
         {error && (
           <p className="border-l-2 border-destructive pl-4 text-sm text-destructive">
             {(error as Error).message}

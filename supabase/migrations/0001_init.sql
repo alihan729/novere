@@ -128,7 +128,11 @@ create policy profiles_select_admin on public.profiles
   for select using (public.is_admin());
 
 create policy profiles_update_own on public.profiles
-  for update using (auth.uid() = id) with check (auth.uid() = id);
+  for update using (auth.uid() = id)
+  with check (
+    auth.uid() = id
+    AND role = (select p.role from public.profiles p where p.id = auth.uid())
+  );
 
 create policy profiles_insert_self on public.profiles
   for insert with check (auth.uid() = id);

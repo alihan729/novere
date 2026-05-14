@@ -32,13 +32,13 @@ export function FavoriteButton({ propertyId, className }: FavoriteButtonProps) {
       className={cn(
         "inline-flex h-11 items-center gap-3 border px-5 text-xs uppercase tracking-[0.25em] transition-colors duration-300",
         isFavorite
-          ? "border-[#C9A961] text-[#C9A961]"
+          ? "border-gold text-gold"
           : "border-foreground/40 text-foreground hover:border-foreground",
         className
       )}
       aria-pressed={isFavorite}
     >
-      <Heart size={16} fill={isFavorite ? "#C9A961" : "none"} strokeWidth={1.2} />
+      <Heart size={16} fill={isFavorite ? "currentColor" : "none"} strokeWidth={1.2} />
       {isFavorite ? "Saved" : "Save"}
     </button>
   );

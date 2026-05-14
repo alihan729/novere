@@ -50,7 +50,7 @@ export default function Register() {
   }
 
   return (
-    <Container className="flex min-h-[70vh] max-w-md flex-col justify-center py-24">
+    <Container className="page-enter flex min-h-[70vh] max-w-md flex-col justify-center py-24">
       <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Account</p>
       <h1 className="mt-6 font-display text-display-md">Request access.</h1>
       <p className="mt-4 text-sm text-muted-foreground">

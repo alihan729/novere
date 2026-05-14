@@ -40,9 +40,9 @@ export default function Login() {
   }
 
   return (
-    <Container className="flex min-h-[70vh] max-w-md flex-col justify-center py-24">
+    <Container className="page-enter flex min-h-[70vh] max-w-md flex-col justify-center py-24">
       <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Account</p>
-      <h1 className="mt-6 font-display text-display-md">Sign in.</h1>
+      <h1 className="mt-6 font-display text-display-md">Welcome back.</h1>
 
       <form onSubmit={onSubmit} className="mt-12 flex flex-col gap-8">
         <div className="flex flex-col gap-3">
@@ -77,7 +77,7 @@ export default function Login() {
         )}
 
         <Button type="submit" disabled={submitting} className="mt-4">
-          {submitting ? "Signing in…" : "Sign in"}
+          {submitting ? "Entering…" : "Enter"}
         </Button>
       </form>
 
