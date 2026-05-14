@@ -80,7 +80,7 @@ export function ProfileForm() {
         <p className="border-l-2 border-destructive pl-4 text-sm text-destructive">{error}</p>
       )}
       {status === "saved" && (
-        <p className="border-l-2 border-[#C9A961] pl-4 text-sm text-[#C9A961]">Saved.</p>
+        <p className="border-l-2 border-gold pl-4 text-sm text-gold">Saved.</p>
       )}
 
       <div>

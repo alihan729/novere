@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container } from "@/components/layout/Container";
 
 export function Footer() {
@@ -15,14 +16,14 @@ export function Footer() {
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Explore</p>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><a href="/catalog" className="transition-colors hover:text-[#C9A961]">Residences</a></li>
-              <li><a href="/catalog?type=villa" className="transition-colors hover:text-[#C9A961]">Villas</a></li>
-              <li><a href="/catalog?type=penthouse" className="transition-colors hover:text-[#C9A961]">Penthouses</a></li>
+              <li><Link to="/catalog" className="transition-colors hover:text-gold">Residences</Link></li>
+              <li><Link to="/catalog?type=villa" className="transition-colors hover:text-gold">Villas</Link></li>
+              <li><Link to="/catalog?type=penthouse" className="transition-colors hover:text-gold">Penthouses</Link></li>
             </ul>
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Agency</p>
-            <ul className="mt-5 space-y-3 text-sm">
+            <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               <li>About</li>
               <li>Press</li>
               <li>Careers</li>
@@ -31,8 +32,16 @@ export function Footer() {
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Contact</p>
             <ul className="mt-5 space-y-3 text-sm">
-              <li>concierge@novere.estate</li>
-              <li>+41 22 555 0100</li>
+              <li>
+                <a href="mailto:concierge@novere.estate" className="transition-colors hover:text-gold">
+                  concierge@novere.estate
+                </a>
+              </li>
+              <li>
+                <a href="tel:+41225550100" className="transition-colors hover:text-gold">
+                  +41 22 555 0100
+                </a>
+              </li>
             </ul>
           </div>
         </div>

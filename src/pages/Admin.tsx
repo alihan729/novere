@@ -99,8 +99,8 @@ export default function Admin() {
   }
 
   return (
-    <Container className="py-16 md:py-24">
-      <p className="text-xs uppercase tracking-[0.4em] text-[#C9A961]">Admin</p>
+    <Container className="page-enter py-16 md:py-24">
+      <p className="text-xs uppercase tracking-[0.4em] text-gold">Admin</p>
       <h1 className="mt-6 font-display text-display-lg">Manage portfolio.</h1>
 
       <section className="mt-16 border-y border-foreground/10 py-12">
@@ -240,7 +240,7 @@ export default function Admin() {
               type="checkbox"
               checked={form.featured}
               onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-              className="h-4 w-4 accent-[#C9A961]"
+              className="h-4 w-4 accent-gold"
             />
             <span className="text-xs uppercase tracking-[0.25em]">Featured</span>
           </label>
@@ -310,7 +310,7 @@ export default function Admin() {
                   <p className="mt-2 text-sm">
                     {formatPrice(p.price)}
                     {p.featured && (
-                      <span className="ml-3 text-xs uppercase tracking-[0.25em] text-[#C9A961]">
+                      <span className="ml-3 text-xs uppercase tracking-[0.25em] text-gold">
                         featured
                       </span>
                     )}

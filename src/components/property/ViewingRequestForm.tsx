@@ -49,7 +49,7 @@ export function ViewingRequestForm({ propertyId }: ViewingRequestFormProps) {
   if (done) {
     return (
       <div className="border-y border-foreground/10 py-10">
-        <p className="text-xs uppercase tracking-[0.3em] text-[#C9A961]">Received</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">Received</p>
         <h3 className="mt-4 font-display text-2xl">Your request has been logged.</h3>
         <p className="mt-4 text-sm text-muted-foreground">
           A senior representative will be in touch shortly. The status of this request is visible in your account.

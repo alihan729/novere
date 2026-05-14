@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container } from "@/components/layout/Container";
 import { PropertyCard } from "@/components/property/PropertyCard";
+import { PropertyCardSkeleton } from "@/components/ui/skeleton";
 import { useFeaturedProperties } from "@/hooks/useProperties";
 
 export default function Landing() {
@@ -8,20 +9,33 @@ export default function Landing() {
 
   return (
     <>
+      {/* Hero */}
       <section className="border-b border-foreground/10">
         <Container className="flex min-h-[80vh] flex-col justify-center py-24">
-          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
+          <p
+            className="animate-fade-in text-xs uppercase tracking-[0.4em] text-muted-foreground"
+            style={{ animationDelay: "100ms" }}
+          >
             Boutique residential agency
           </p>
-          <h1 className="mt-8 max-w-4xl font-display text-display-xl text-balance">
+          <h1
+            className="mt-8 max-w-4xl animate-fade-in-slow font-display text-display-xl text-balance"
+            style={{ animationDelay: "250ms" }}
+          >
             Residences of singular consequence.
           </h1>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
+          <p
+            className="mt-8 max-w-xl animate-fade-in-slow text-base leading-relaxed text-muted-foreground"
+            style={{ animationDelay: "450ms" }}
+          >
             Novere represents an intentionally narrow portfolio of villas, penthouses,
-            and apartments across Geneva, Monaco and Dubai — each curated for the
+            and apartments across Geneva, Monaco, and Dubai — each curated for the
             collector of fine living.
           </p>
-          <div className="mt-12 flex flex-wrap gap-6">
+          <div
+            className="mt-12 flex animate-fade-in-slow flex-wrap gap-6"
+            style={{ animationDelay: "650ms" }}
+          >
             <Link
               to="/catalog"
               className="border border-foreground/40 px-8 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors duration-300 hover:border-foreground hover:bg-foreground hover:text-background"
@@ -38,6 +52,7 @@ export default function Landing() {
         </Container>
       </section>
 
+      {/* Pillars */}
       <section className="py-24 md:py-32">
         <Container className="grid gap-16 md:grid-cols-3">
           {[
@@ -56,9 +71,13 @@ export default function Landing() {
               title: "Discreet transactions",
               body: "Off-market access and confidential closings, supported by trusted legal partners.",
             },
-          ].map((item) => (
-            <div key={item.kicker} className="border-t border-foreground/20 pt-8">
-              <span className="text-xs uppercase tracking-[0.3em] text-[#C9A961]">{item.kicker}</span>
+          ].map((item, i) => (
+            <div
+              key={item.kicker}
+              className="animate-fade-in border-t border-foreground/20 pt-8"
+              style={{ animationDelay: `${i * 150}ms` }}
+            >
+              <span className="text-xs uppercase tracking-[0.3em] text-gold">{item.kicker}</span>
               <h3 className="mt-6 font-display text-2xl">{item.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </div>
@@ -66,6 +85,7 @@ export default function Landing() {
         </Container>
       </section>
 
+      {/* Featured */}
       <section className="border-y border-foreground/10 py-24">
         <Container className="flex flex-col items-start gap-10 md:flex-row md:items-end md:justify-between">
           <div>
@@ -74,15 +94,20 @@ export default function Landing() {
           </div>
           <Link
             to="/catalog"
-            className="text-xs uppercase tracking-[0.25em] text-muted-foreground underline-offset-8 hover:text-foreground hover:underline"
+            className="group flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground underline-offset-8 hover:text-foreground hover:underline"
           >
-            All residences →
+            All residences
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
         </Container>
 
         <Container className="mt-16">
           {isLoading && (
-            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Loading…</p>
+            <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <PropertyCardSkeleton key={i} />
+              ))}
+            </div>
           )}
           {!isLoading && featured && featured.length > 0 && (
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -97,6 +122,7 @@ export default function Landing() {
         </Container>
       </section>
 
+      {/* CTA */}
       <section className="py-24 md:py-32">
         <Container className="flex flex-col items-center gap-8 text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">A private conversation</p>
@@ -108,7 +134,7 @@ export default function Landing() {
           </p>
           <Link
             to="/register"
-            className="mt-6 border border-[#C9A961] px-10 py-4 text-xs uppercase tracking-[0.3em] text-[#C9A961] transition-colors duration-300 hover:bg-[#C9A961] hover:text-ink-900"
+            className="mt-6 border border-gold px-10 py-4 text-xs uppercase tracking-[0.3em] text-gold transition-colors duration-300 hover:bg-gold hover:text-ink-900"
           >
             Request access
           </Link>
